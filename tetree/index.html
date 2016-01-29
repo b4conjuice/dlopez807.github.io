@@ -194,7 +194,7 @@ th, td {
 </body>
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="http://requirejs.org/docs/release/2.1.11/minified/require.js"></script>
+<!--<script src="http://requirejs.org/docs/release/2.1.11/minified/require.js"></script>-->
 <script>
 
 function init() {
@@ -358,7 +358,7 @@ function showNamesPrompt(terrNum) {
 		$("#names-prompt header span").text(terrNum);
 	}
 	else {
-		content = "<div id='names-prompt' class='page prompt'><header><h1>select who to assign to terr #<span>" + terrNum + "</span></h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
+		content = "<div id='names-prompt' class='page prompt'><header><h1>assign brother to terr #<span>" + terrNum + "</span></h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
 		$("#content").append(content);
 	}
 	

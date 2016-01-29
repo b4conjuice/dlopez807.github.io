@@ -305,10 +305,6 @@ function showTerr(c) {
 		$("#content table").append("<tr id='terr" + territoryNumber + "'><td class='terrNum'>" + territoryNumber + "</td><td class='name'>" + name + "</td><td class='start'>" + start + "</td><td class='end'>" + end + "</td></tr>");	
 	}
 	
-	name = function() {
-		showNamesPrompt();
-	}
-	
 	start = function(terrNum, name) {
 		$("#content table #terr" + terrNum + " .name").text(name);
 		$("#content table #terr" + terrNum + " .start").text(todaysDate());
@@ -329,7 +325,7 @@ function showTerr(c) {
 	(function init() {
 		show(c);
 		$(".name").click(function() {
-			name();
+			showNamesPrompt();
 		});
 		$(".start").click(function() {
 			start($(this).siblings(".terrNum").html(), "Mike");

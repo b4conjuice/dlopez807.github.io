@@ -334,7 +334,7 @@ function showTerr(c) {
 	(function init() {
 		show(c);
 		$(".name").click(function() {
-			showNamesPrompt();
+			showNamesPrompt($(this).siblings(".terrNum").html());
 		});
 		$(".start").click(function() {
 			start($(this).siblings(".terrNum").html(), "Mike");
@@ -345,14 +345,14 @@ function showTerr(c) {
 	})();
 }
 
-function showNamesPrompt() {
+function showNamesPrompt(terrNum) {
 	var content = "";
 	if ($("#names-prompt").length > 0)  {
 		$("#names-prompt").css("display", "block");	
 		$("#names-prompt .names-list").empty();
 	}
 	else {
-		content = "<div id='names-prompt' class='page prompt'><header><h1>select who to assign</h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
+		content = "<div id='names-prompt' class='page prompt'><header><h1>select who to assign to terr #" + terrNum + "</h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
 		$("#content").append(content);
 	}
 	
@@ -363,6 +363,10 @@ function showNamesPrompt() {
 	}
 	
 	show();
+	$("#names-prompt .names-list li").click(function() {
+		$("#names-prompt").css("display", "none");
+		showNames($(this).html());
+	});
 }
 
 $(document).ready(function() {

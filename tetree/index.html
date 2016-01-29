@@ -349,16 +349,16 @@ function showNamesPrompt() {
 	var content = "";
 	if ($("#names-prompt").length > 0)  {
 		$("#names-prompt").css("display", "block");	
-		$("#names-prompt-list").empty();
+		$("#names-prompt .names-list").empty();
 	}
 	else {
-		content = "<div id='names-prompt' class='page prompt'><header><h1>select who to assign</h1></header><div class='page-content'><ul id='names-prompt-list'></ul></div></div>";
+		content = "<div id='names-prompt' class='page prompt'><header><h1>select who to assign</h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
 		$("#content").append(content);
 	}
 	
 	show = function() {
 		$.each(namesArray, function(index, value) {
-			$("#names-prompt-list").append("<li>" + value.firstName + " " + value.lastName + "</li");
+			$("#names-prompt .names-list").append("<li>" + value.firstName + " " + value.lastName + "</li");
 		});
 	}
 	

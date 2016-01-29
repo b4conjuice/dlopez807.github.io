@@ -138,7 +138,7 @@ th, td {
 	width: 110px;
 }
 
-#names-list li {
+.names-list li {
 	text-align: center;	
 	height: 50px;
 }
@@ -272,16 +272,16 @@ function showNames() {
 	var content = "";
 	if ($("#names-page").length > 0)  {
 		$("#names-page").css("display", "block");	
-		$("#names-list").empty();
+		$("#names-page .names-list").empty();
 	}
 	else {
-		content = "<div id='names-page' class='page'><header><h1>Names</h1></header><div class='page-content'><ul id='names-list'></ul></div></div>";
+		content = "<div id='names-page' class='page'><header><h1>Names</h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
 		$("#content").append(content);
 	}
 	
 	show = function() {
 		$.each(namesArray, function(index, value) {
-			$("#names-list").append("<li>" + value.firstName + " " + value.lastName + "</li");
+			$("#names-page .names-list").append("<li>" + value.firstName + " " + value.lastName + "</li");
 		});
 	}
 	

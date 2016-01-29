@@ -305,6 +305,10 @@ function showTerr(c) {
 		$("#content table").append("<tr id='terr" + territoryNumber + "'><td class='terrNum'>" + territoryNumber + "</td><td class='name'>" + name + "</td><td class='start'>" + start + "</td><td class='end'>" + end + "</td></tr>");	
 	}
 	
+	name = function() {
+		showNamesPrompt();
+	}
+	
 	start = function(terrNum, name) {
 		$("#content table #terr" + terrNum + " .name").text(name);
 		$("#content table #terr" + terrNum + " .start").text(todaysDate());
@@ -324,6 +328,9 @@ function showTerr(c) {
 	
 	(function init() {
 		show(c);
+		$(".name").click(function() {
+			name();
+		});
 		$(".start").click(function() {
 			start($(this).siblings(".terrNum").html(), "Mike");
 		});
@@ -332,6 +339,27 @@ function showTerr(c) {
 		});
 	})();
 }
+
+function showNamesPrompt() {
+	var content = "";
+	if ($("#names-prompt").length > 0)  {
+		$("#names-prompt").css("display", "block");	
+		$("#names-prompt-list").empty();
+	}
+	else {
+		content = "<div id='names-prompt' class='page'><header><h1>select who to assign</h1></header><div class='page-content'><ul id='names-prompt-list'></ul></div></div>";
+		$("#content").append(content);
+	}
+	
+	show = function() {
+		$.each(namesArray, function(index, value) {
+			$("#names-prompt-list").append("<li>" + value.firstName + " " + value.lastName + "</li");
+		});
+	}
+	
+	show();
+}
+
 $(document).ready(function() {
 	init();	
 });

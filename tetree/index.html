@@ -91,6 +91,11 @@ h1 {
 	padding: 50px 0px;
 }
 
+.prompt {
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 2;
+}
+
 .page-content {
 	padding-top: 40px;
 }
@@ -343,7 +348,7 @@ function showNamesPrompt() {
 		$("#names-prompt-list").empty();
 	}
 	else {
-		content = "<div id='names-prompt' class='page'><header><h1>select who to assign</h1></header><div class='page-content'><ul id='names-prompt-list'></ul></div></div>";
+		content = "<div id='names-prompt' class='page prompt'><header><h1>select who to assign</h1></header><div class='page-content'><ul id='names-prompt-list'></ul></div></div>";
 		$("#content").append(content);
 	}
 	

@@ -323,13 +323,7 @@ function showTerr(c) {
 		$("#content table #terr" + terrNum + " .end").text(todaysDate());
 	}
 	
-	function todaysDate() {
-		var today = new Date();
-		var month = today.getMonth();
-		var day = today.getDate();
-		var year = today.getFullYear();
-		return parseInt(month) + 1 + "/" + day + "/" + year;
-	}
+	
 	
 	(function init() {
 		show(c);
@@ -343,6 +337,14 @@ function showTerr(c) {
 			end($(this).siblings(".terrNum").html());
 		});
 	})();
+}
+
+function todaysDate() {
+	var today = new Date();
+	var month = today.getMonth();
+	var day = today.getDate();
+	var year = today.getFullYear();
+	return parseInt(month) + 1 + "/" + day + "/" + year;
 }
 
 function showNamesPrompt(terrNum) {
@@ -368,6 +370,7 @@ function showNamesPrompt(terrNum) {
 		$("#names-prompt").css("display", "none");
 		//showTerr($(this).html());
 		$("#territory-page table #terr" + terrNum + " .name").text($(this).html());
+		$("#content table #terr" + terrNum + " .start").text(todaysDate());
 	});
 }
 

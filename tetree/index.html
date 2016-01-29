@@ -350,9 +350,10 @@ function showNamesPrompt(terrNum) {
 	if ($("#names-prompt").length > 0)  {
 		$("#names-prompt").css("display", "block");	
 		$("#names-prompt .names-list").empty();
+		$("#names-prompt header span").text(terrNum);
 	}
 	else {
-		content = "<div id='names-prompt' class='page prompt'><header><h1>select who to assign to terr #" + terrNum + "</h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
+		content = "<div id='names-prompt' class='page prompt'><header><h1>select who to assign to terr #<span>" + terrNum + "</span></h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
 		$("#content").append(content);
 	}
 	
@@ -365,7 +366,7 @@ function showNamesPrompt(terrNum) {
 	show();
 	$("#names-prompt .names-list li").click(function() {
 		$("#names-prompt").css("display", "none");
-		showNames($(this).html());
+		showTerr($(this).html());
 	});
 }
 

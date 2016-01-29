@@ -367,7 +367,7 @@ function showNamesPrompt(terrNum) {
 	$("#names-prompt .names-list li").click(function() {
 		$("#names-prompt").css("display", "none");
 		//showTerr($(this).html());
-		$("#territory-page table #terr" + terrNum + ".name").text($(this).html());
+		$("#territory-page table #terr" + terrNum + " .name").text($(this).html());
 	});
 }
 

@@ -160,9 +160,9 @@ th, td {
         <nav>
         
             <ul>
-                <li><button id="terr-nav-button" class="nav-button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></li>
-                <li><button id="current-nav-button" class="nav-button">Current</button></li>
-                <li><button id="names-nav-button" class="nav-button">Names</button></li>
+                <li><button id="terr-nav-button" class="nav-button"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></button></li>
+                <li><button id="current-nav-button" class="nav-button"><span class="glyphicon glyphicon-file" aria-hidden="true"></button></li>
+                <li><button id="names-nav-button" class="nav-button"><span class="glyphicon glyphicon-user" aria-hidden="true"></button></li>
             </ul>
         
         </nav>
@@ -217,7 +217,7 @@ function init() {
 		$(".active").removeClass("active");
 		$("#current-nav-button").addClass("active");
 		$(".page").css("display", "none");
-		$("#current-nav-button").html($(this).html());
+		//$("#current-nav-button").html($(this).html());
 		showTerr($(this).html());
 		
 		//document.cookie="terr=" + $(this).html();

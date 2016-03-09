@@ -1,0 +1,85 @@
+{
+	"team": [
+		{
+			"lastName": "Parker",
+			"firstName": "Tony",
+			"position": "PG"
+		},
+		{
+			"lastName": "Green",
+			"firstName": "Danny",
+			"position": "SG",
+			"position2": "SF"
+		},
+		{
+			"lastName": "Leonard",
+			"firstName": "Kawhi",
+			"position": "SF"
+		},
+		{
+			"lastName": "Aldridge",
+			"firstName": "LaMarcus",
+			"position": "PF",
+			"position2": "C"
+		},
+		{
+			"lastName": "Duncan",
+			"firstName": "Tim",
+			"position": "C",
+			"position2": "PF"
+		},
+		{
+			"lastName": "Mills",
+			"firstName": "Patty",
+			"position": "PG"
+		},
+		{
+			"lastName": "Ginobli",
+			"firstName": "Manu",
+			"position": "SG",
+			"position2": "SF"
+		},
+		{
+			"lastName": "Anderson",
+			"firstName": "Kyle",
+			"position": "SF"
+		},
+		{
+			"lastName": "Diaw",
+			"firstName": "Boris",
+			"position": "C",
+			"position2": "PF"
+		},
+		{
+			"lastName": "West",
+			"firstName": "David",
+			"position": "PF"
+		},
+		{
+			"lastName": "Marjanovic",
+			"firstName": "Boban",
+			"position": "C"
+		},
+		{
+			"lastName": "Simmons",
+			"firstName": "Jonathan",
+			"position": "SG"
+		},
+		{
+			"lastName": "McCallum",
+			"firstName": "Ray",
+			"position": "PG"
+		},
+		{
+			"lastName": "Bonner",
+			"firstName": "Matt",
+			"position": "PF",
+			"postion2": "C"
+		},
+		{
+			"lastName": "Butler",
+			"firstName": "Rasual",
+			"position": "SF"
+		}
+	]
+}

@@ -1,0 +1,79 @@
+{
+	"team": [
+		{
+			"lastName": "Curry",
+			"firstName": "Stephen",
+			"position": "PG",
+			"position2": "SG"
+		},
+		{
+			"lastName": "Drummond",
+			"firstName": "Andre",
+			"position": "C"
+		},
+		{
+			"lastName": "Noel",
+			"firstName": "Nerlens",
+			"position": "C",
+			"position2": "PF"
+		},
+		{
+			"lastName": "Dragic",
+			"firstName": "Goran",
+			"position": "PG",
+			"position2": "SG"
+		},
+		{
+			"lastName": "Mike",
+			"firstName": "Conley",
+			"position": "PG"
+		},
+		{
+			"lastName": "Antetokoumpo",
+			"firstName": "Giannis",
+			"position": "SF",
+			"position2": "SG"
+		},
+		{
+			"lastName": "Mirotic",
+			"firstName": "Nikola",
+			"position": "PF",
+			"position2": "SF"
+		},
+		{
+			"lastName": "Smith",
+			"firstName": "JR",
+			"position": "SG",
+			"position2": "SF"
+		},
+		{
+			"lastName": "Collison",
+			"firstName": "Darren",
+			"position": "PG",
+			"position2": "SG"
+		},
+		{
+			"lastName": "Aminu",
+			"firstName": "Al-Forouq",
+			"position": "SF",
+			"position2": "PF"
+		},
+		{
+			"lastName": "Green",
+			"firstName": "Gerald",
+			"position": "SG",
+			"position2": "SF"
+		},
+		{
+			"lastName": "Jones",
+			"firstName": "Terrence",
+			"position": "PF"
+		},
+		{
+			"lastName": "Morris",
+			"firstName": "Markieff",
+			"position": "PF",
+			"position2": "SF"
+		}
+	]
+}

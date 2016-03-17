@@ -230,7 +230,7 @@ function interpretCommand(command) {
 					enterInfo(commands);
 					break;
 				case "121915":
-					document.location.href="../personal.html";
+					document.location.href="../../personal.html";
 					break;
 				//case "clear":
 				//	$("#info").empty();

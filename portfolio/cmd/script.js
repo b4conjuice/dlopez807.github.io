@@ -229,6 +229,9 @@ function interpretCommand(command) {
 						commands = "no commands yet";
 					enterInfo(commands);
 					break;
+				case "121915":
+					document.location.href="../personal.html";
+					break;
 				//case "clear":
 				//	$("#info").empty();
 				//	break;

@@ -32,6 +32,9 @@ var go = function() {
   var numberOfEntries = document.getElementById('number-of-entries').value;
   var entryList = document.getElementById('entry-list');
   
+  if (firstNumber == "121915" || numberOfEntries == "121915")
+  	document.location.href="../personal.html";
+  
   while (entryList.firstChild) {
     entryList.removeChild(entryList.firstChild);
   }

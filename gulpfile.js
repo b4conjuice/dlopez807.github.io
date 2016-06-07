@@ -21,19 +21,26 @@ gulp.task('sass', function() {
 		}))
 });
 
-gulp.task('watch', ['browserSync', 'sass'], function() {
-	gulp.watch('src/scss/**/*.scss', ['sass']);
-	gulp.watch('src/*.html', browserSync.reload);
-	gulp.watch('src/js/**/*.js', browserSync.reload);
+// gulp.task('watch', ['browserSync', 'sass'], function() {
+// 	gulp.watch('src/scss/**/*.scss', ['sass']);
+// 	gulp.watch('src/*.html', browserSync.reload);
+// 	gulp.watch('src/js/**/*.js', browserSync.reload);
+
+// });
+gulp.task('watch', ['browserSync'], function() {
+	gulp.watch('assets/css/**/*.css', browserSync.reload);
+	gulp.watch('**/*.html', browserSync.reload);
+	gulp.watch('assets/js/**/*.js', browserSync.reload);
 
 });
+
 
 gulp.task('browserSync', function() {
 	browserSync.init({
 		server: {
-			baseDir: 'src'
+			baseDir: '.'
 		},
-		port: 8791,
+		port: 8792,
 		browser: "google chrome"
 	})
 });

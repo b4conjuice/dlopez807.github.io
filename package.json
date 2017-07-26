@@ -7,6 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp",
     "build": "gulp build",
+    "deployDev": "gulp build && gulp deploy",
+    "deploy": "npm run build && aws s3 sync build/ s3://himynameisdaniel && npm run postdeploy",
     "postdeploy": "aws cloudfront create-invalidation --distribution-id E1R8XX7G3OACBJ --paths '/*' && aws cloudfront create-invalidation --distribution-id EMP416R98PX7F --paths '/*'"
   },
   "repository": {

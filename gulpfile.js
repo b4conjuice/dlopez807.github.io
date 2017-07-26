@@ -76,7 +76,8 @@ gulp.task('startbuild', function(callback) {
 })
 
 gulp.task('deploy', function() {
-	return gulp.src('./build/**/*')
+	//return gulp.src('./build/**/*')
+	return gulp.src(['./build/**/*', './CNAME'])
 	.pipe(ghPages({
 		branch: 'master'
 	}));

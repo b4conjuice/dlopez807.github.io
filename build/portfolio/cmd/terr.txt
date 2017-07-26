@@ -1,0 +1,102 @@
+{
+    "elders": [
+        {
+            "lastName": "Bernardo",
+            "firstName": "Noel",
+			"FSG": 3
+        },
+        {
+            "lastName": "David",
+            "firstName": "Danilo",
+			"FSG": 1
+        },
+        {
+            "lastName": "Escala",
+            "firstName": "Omar",
+			"FSG": 2
+        },
+        {
+            "lastName": "Goco",
+            "firstName": "Rey",
+			"FSG": 5
+        },
+        {
+            "lastName": "Marquez",
+            "firstName": "Michael",
+			"FSG": 1
+        },
+        {
+            "lastName": "Marquez",
+            "firstName": "Oscar",
+			"FSG": 4
+        },
+        {
+            "lastName": "Piedad",
+            "firstName": "Tammy",
+			"FSG": 6
+        },
+        {
+            "lastName": "Tan",
+            "firstName": "Carlito",
+			"FSG": 6
+        }
+    ],
+    "servants": [
+        {
+            "lastName": "Lopez",
+            "firstName": "Daniel",
+			"FSG": 4
+        },
+        {
+            "lastName": "Lopez",
+            "firstName": "Danilo",
+			"FSG": 3
+        },
+        {
+            "lastName": "Manuel",
+            "firstName": "Edgar",
+			"FSG": 1
+        },
+        {
+            "lastName": "Valdez",
+            "firstName": "Kevin",
+			"FSG": 2
+        },
+        {
+            "lastName": "Salangga",
+            "firstName": "Domingo",
+			"FSG": 2
+        },
+        {
+            "lastName": "David",
+            "firstName": "Gary",
+			"FSG": 3
+        },
+        {
+            "lastName": "Dimaculangan",
+            "firstName": "Ralph",
+			"FSG": 4
+        },
+        {
+            "lastName": "David",
+            "firstName": "John",
+			"FSG": 6
+        },
+        {
+            "lastName": "Marquez",
+            "firstName": "Marvin",
+			"FSG": 6
+        },
+        {
+            "lastName": "Mitchell",
+            "firstName": "Robert",
+			"FSG": 5
+        }
+    ],
+    "territory": {
+        "Carson": [],
+        "Torrance": [],
+        "Gardena": [],
+        "Harbor City": []
+    }
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Dead Drop</title>
+		<!--<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">-->
+		
+		<!-- Bootstrap -->
+		<!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<!--<link rel="stylesheet" href="assets/css/style.css">-->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Titillium+Web">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:100'>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<!-- Keysequence http://dmauro.github.io/Keypress/ -->
+		<!--<script src="assets/js/keypress/keypress.js"></script>-->
+		
+		<!-- TODO: move to separate stylesheet -->
+		<style>
+			
+			h1, h2 {
+				font-size: 1.5em;
+			}
+			
+			.center {
+				text-align: center;
+			}
+			
+			.out {
+				color: red;
+			}
+			
+			.current {
+				color: green;
+			}
+			
+						
+			.glyphicon {
+				
+				color: #5bc0de;
+			}
+			
+			#info-button {
+				float: right;
+				position: absolute;
+				top: 21px;
+				right: 15px;
+			}
+			
+			.stashChoice {
+				margin-bottom: 8%;
+			}
+		
+		</style>
+	
+	</head>
+	
+	<body class="container-fluid">
+	
+		<h1 class="center">dead drop<span id="info-button" class="glyphicon glyphicon-info-sign"></span></h1>
+		
+		<div id="how-to-play" class="hidden">
+			
+			<h2 class="center">the cards</h2>
+
+			<div class="center">
+			0 0 0 0<br>
+			1 1 1 X<br>
+			2 2 3 3<br>
+			4 5 X X<br>
+			</div>
+			
+			<h2 class="center">the actions</h2>
+			
+			share info:<br>choose another player to swap 1 card with<br>
+			swap stash:<br>choose a card in the stash to swap with one of your cards<br>
+			share secrets:<br>show your two cards to another player. if that player has a card	equal to the sum of your two cards, they must swap that card with one of your cards of your choice<br>
+			grab drop:<br>look at the drop. if it equals to the sum of your hand, you win. otherwise, you're out of the game.
+			
+			<h2 class="center"><span class="glyphicon glyphicon-fire"></span> <span class="glyphicon glyphicon-tint"></span> <span class="glyphicon glyphicon-leaf"></span> baconjuice 
+				<span class="glyphicon glyphicon-globe"></span> <span class="glyphicon glyphicon-cloud"></span> <span class="glyphicon glyphicon-flash"></span>
+			</h2>
+		</div>
+		
+		<div id="game">
+		
+			<div class="row">
+			
+				<div class="col-xs-6">
+				
+					<h2 class="center">stash</h2>
+					<div id="stash" class="center">
+						<span id="stash1">X</span>
+						<span id="stash2">X</span>
+						<span id="stash3">X</span>
+						<span id="stash4">X</span>
+					</div>
+					
+				</div>
+				
+				<div class="col-xs-6">
+				
+					<h2 class="center">drop</h2>
+					<div class="center">
+						<span id="drop">X</span>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id="players">
+				
+				<div class="row">
+				
+					<div class="col-xs-6">
+				
+						<h2 id="p1label" class="plabel center">player 1</h2>
+						
+						<div id="player1" class="player center">
+						
+							<span id="p1card1" class="playerCard">X</span>
+							<span id="p1card2" class="playerCard">X</span>
+						
+						</div>
+					
+					</div>
+					
+					<div class="col-xs-6">
+					
+						<h2 id="p2label" class="plabel center">player 2</h2>
+						
+						<div id="player2" class="player center">
+							
+							<span id="p2card1" class="playerCard">X</span>
+							<span id="p2card2" class="playerCard">X</span>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="row">
+				
+					<div class="col-xs-6">
+				
+						<h2 id="p3label" class="plabel center">player 3</h2>
+						
+						<div id="player3" class="player center">
+						
+							<span id="p3card1" class="playerCard">X</span>
+							<span id="p3card2" class="playerCard">X</span>
+						
+						</div>
+						
+					</div>
+						
+					<div class="col-xs-6">
+						
+						<h2 id="p4label" class="plabel center">player 4</h2>
+						
+						<div id="player4" class="player center">
+						
+							<span id="p4card1" class="playerCard">X</span>
+							<span id="p4card2" class="playerCard">X</span>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			
+			</div>
+			
+			<h2 id="win" class="center"></h2>
+			
+			<button id="start" type="button" class="center2 btn btn-info btn-lg btn-block">Start game</button>
+			
+			<div id="gameInfo" class="hidden">
+				<h2 id="title" class="center">player <span id="currentPlayer"></span>'s turn</h2>
+				
+				<div id= "options">
+					<!--info or instructions-->
+					<h2 id="info" class="center"></h2>
+					
+					<button id="share" type="button" class="button-option initial-option btn btn-primary btn-lg btn-block">Share Info</button>
+					<button id="swap" type="button" class="button-option initial-option btn btn-primary btn-lg btn-block">Swap Stash</button>
+					<button id="sell" type="button" class="button-option initial-option btn btn-primary btn-lg btn-block">Sell Secrets</button>
+				
+					<button id="grab" type="button" class="button-option end-option hidden btn btn-success btn-lg btn-block">Grab Drop</button>
+					<button id="end" type="button" class="button-option end-option hidden btn btn-danger btn-lg btn-block">End Turn</button>
+					
+					<!--select player-->
+					<button id="otherPlayerChoice1" type="button" class="button-option otherPlayerChoice hidden btn btn-info btn-lg btn-block"><!--insert player--></button>
+					<button id="otherPlayerChoice2" type="button" class="button-option otherPlayerChoice hidden btn btn-info btn-lg btn-block"></button>
+					<button id="otherPlayerChoice3" type="button" class="button-option otherPlayerChoice hidden btn btn-info btn-lg btn-block"></button>
+					
+					<!--select hand-->
+					<button id="handChoice1" type="button" class="button-option handChoice hidden btn btn-info btn-lg btn-block"></button>
+					<button id="handChoice2" type="button" class="button-option handChoice hidden btn btn-info btn-lg btn-block"></button>
+					
+					<!--select stash-->
+					<div class="row">
+						<div class="col-xs-6">
+						<button id="stashChoice1" type="button" class="button-option stashChoice hidden btn btn-info btn-lg btn-block"></button>
+						</div>
+						<div class="col-xs-6">
+						<button id="stashChoice2" type="button" class="button-option stashChoice hidden btn btn-info btn-lg btn-block"></button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+						<button id="stashChoice3" type="button" class="button-option stashChoice hidden btn btn-info btn-lg btn-block"></button>
+						</div>
+						<div class="col-xs-6">
+						<button id="stashChoice4" type="button" class="button-option stashChoice hidden btn btn-info btn-lg btn-block"></button>
+						</div>
+					</div>
+					
+					<!--confirm opponent-->
+					<button id="confirm" type="button" class="button-option hidden btn btn-success btn-lg btn-block">continue</button>
+					
+				</div>
+				
+			</div>
+		
+		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script type="text/javascript" src="deaddrop.js"></script>
+	
+	</body>
+
+</html>

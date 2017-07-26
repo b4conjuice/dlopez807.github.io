@@ -1,0 +1,499 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>tetree</title>
+<meta name="viewport" content="user-scalable=no, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+<style>
+@charset "utf-8";
+/* CSS Document */
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 1.4em;
+}
+
+#container {
+	
+}
+
+#content {
+	margin: 0 auto;
+	width: 500px;
+	height: auto;
+	background: lightblue;
+}
+
+nav, #action-bar {
+	width: 100%;
+	height: 50px;
+	background: rgb(0,87,245);
+	left: 0;
+}
+
+nav {
+	position: fixed;
+	top: 0;	
+}
+
+#action-bar {
+	position: fixed;
+	bottom: 0	
+}
+
+nav li {
+	float: left;
+	list-style: none;	
+	margin: 0 39px;
+}
+
+nav button {
+	height: 100%;
+	width: 100%;
+	background: transparent;
+	color: white;
+	border: 0;
+}
+
+nav .active {
+	background: lightblue;
+}
+
+header {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	height: 40px;
+	background: lightblue;
+}
+
+h1 {
+	text-align: center;	
+	font-size: 1.4em;
+	padding: 5px;
+}
+
+.page {
+	padding: 50px 0px;
+}
+
+.prompt {
+	background: rgba(173, 216, 230, 0.85);
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.page-content {
+	padding-top: 55px;
+}
+
+.button-group {
+	margin: 5px auto;
+	height: 100px;
+	width: 125px;
+	text-align: center;
+}
+
+.button-group button {
+}
+
+.territory-button {
+	width: 125px;
+	height: 50px;
+	background: rgb(0,87,245);
+	border: 0;
+	margin: 20px 0px;
+	color: white
+}
+
+table {
+	margin: 0 auto;	
+}
+
+tr {
+	margin-bottom: 5px;	
+	height: 50px;
+}
+
+th, td {
+	text-align: center;	
+	padding: 0 7px;
+	width: 110px;
+}
+
+.names-list li {
+	text-align: center;	
+	height: 50px;
+}
+
+@media only screen and (max-device-width: 375px) {
+	html {
+		height: 627px;	
+	}
+	#content {
+		width: 375px;
+		min-height: 627px;
+	}
+	
+	nav li {
+		margin: 0;
+		width: 125px;
+		height: 50px;
+	}
+
+
+}
+
+</style>
+</head>
+
+<body>
+<div id="container">
+    <div id="content">
+        <nav>
+        
+            <ul>
+                <li><button id="terr-nav-button" class="nav-button"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></button></li>
+                <li><button id="current-nav-button" class="nav-button"><span class="glyphicon glyphicon-file" aria-hidden="true"></button></li>
+                <li><button id="names-nav-button" class="nav-button"><span class="glyphicon glyphicon-user" aria-hidden="true"></button></li>
+            </ul>
+        
+        </nav>
+        
+        <div id="action-bar">
+        	
+            <ul>
+            	<li><button id="new-nav-button" class="nav-button">New</button></li>
+                <li><button id="save-nav-button" class="nav-button">Save</button></li>
+			</ul>
+            
+        </div>
+    
+    </div>
+</div>
+
+</body>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!--<script src="http://requirejs.org/docs/release/2.1.11/minified/require.js"></script>-->
+<script>
+
+function init() {
+	
+	//alert("cookie: " + getCookie("terr"));
+	
+	
+	//$("#current-nav-button").addClass("active");
+	
+	$("#terr-nav-button").click(terr);
+	$("#current-nav-button").click(current);
+	$("#names-nav-button").click(names);
+	$("#new-nav-button").click(newFunc);
+	$("#save-nav-button").click(save);
+	
+	var content = "<div id='init-page' class='page'><header><h1>select a territory</h1></header><div class='page-content'><div class='button-group'>"
+	$.each(cityTerritoryMap, function(index, value) {
+		content += "<button class='territory-button'>" + index + "</button>";
+	});
+	content += "</div></div></div>";
+	$("#content").append(content);
+	
+	if (getCookie("terr") != "") {
+		$(".page").css("display", "none");
+		$("#current-nav-button").addClass("active");
+		showTerr(getCookie("terr"));
+	}
+	else {
+		$("#init-page").css("display", "block");
+	}
+	
+	$(".territory-button").click(function() {
+		$(".active").removeClass("active");
+		$("#current-nav-button").addClass("active");
+		$(".page").css("display", "none");
+		//$("#current-nav-button").html($(this).html());
+		showTerr($(this).html());
+		
+		//document.cookie="terr=" + $(this).html();
+		setCookie("terr", $(this).html(), 90);
+	});
+}
+
+function terr() {
+	$(".active").removeClass("active");
+	$("#terr-nav-button").addClass("active");
+	$(".page").css("display", "none");
+	$("#init-page").css("display", "block");
+}
+
+function names() {
+	$(".active").removeClass("active");
+	$("#names-nav-button").addClass("active");
+	$(".page").css("display", "none");
+	//if () // names page doesn't exist
+	//initialize names
+	showNames();
+}
+
+function current() {
+	$(".active").removeClass("active");
+	$("#current-nav-button").addClass("active");
+	$(".page").css("display", "none");
+	$("#territory-page").css("display", "block");
+}
+
+function newFunc() {
+	$(".page").css("display", "none");
+	
+}
+
+function save() {
+	$(".page").css("display", "none");
+	
+}
+
+function showNames() {
+	var content = "";
+	if ($("#names-page").length > 0)  {
+		$("#names-page").css("display", "block");	
+		$("#names-page .names-list").empty();
+	}
+	else {
+		content = "<div id='names-page' class='page'><header><h1>Names</h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
+		$("#content").append(content);
+	}
+	
+	show = function() {
+		$.each(namesArray, function(index, value) {
+			$("#names-page .names-list").append("<li>" + value.firstName + " " + value.lastName + "</li");
+		});
+	}
+	
+	show();
+}
+
+function showTerr(c) {
+	var content = "";
+	if ($("#territory-page").length > 0)  {
+		$("#territory-page").css("display", "block");
+		$("#territory-page h1").text(c);
+		$("#territory-page table").empty().append("<thead><tr><th>#</th><th>Name</th><th>Assigned</th><th>Returned</th></tr></thead>");;
+		
+	}
+	else {
+		content = "<div id='territory-page' class='page' ><header><h1>" + c + "</h1></header><div class='page-content'><table><thead><tr><th>#</th><th>Name</th><th>Assigned</th><th>Returned</th></tr></thead></table></div></div>";
+		$("#content").append(content);
+	}
+	var defaultText = "----";
+	
+	
+	show = function(city) {
+		var territoryCount = cityTerritoryMap[city];
+		//$("#content table").empty();
+		for (var i = 0; i < territoryCount; i++) {
+			addRow(i+1, defaultText, defaultText, defaultText);
+		}
+	}
+	function addRow(territoryNumber, name, start, end) {
+		$("#content table").append("<tr id='terr" + territoryNumber + "'><td class='terrNum'>" + territoryNumber + "</td><td class='name'>" + name + "</td><td class='start'>" + start + "</td><td class='end'>" + end + "</td></tr>");	
+	}
+	
+	start = function(terrNum, name) {
+		$("#content table #terr" + terrNum + " .name").text(name);
+		$("#content table #terr" + terrNum + " .start").text(todaysDate());
+	};
+	
+	end = function(terrNum) {
+		$("#content table #terr" + terrNum + " .end").text(todaysDate());
+	};
+	
+	
+	
+	(function init() {
+		show(c);
+		$(".name").click(function() {
+			showNamesPrompt($(this).siblings(".terrNum").html());
+		});
+		$(".start").click(function() {
+			start($(this).siblings(".terrNum").html(), "Mike");
+		});
+		$(".end").click(function() {
+			end($(this).siblings(".terrNum").html());
+		});
+	})();
+}
+
+function todaysDate() {
+	var today = new Date();
+	var month = today.getMonth();
+	var day = today.getDate();
+	var year = today.getFullYear();
+	return parseInt(month) + 1 + "/" + day + "/" + year;
+}
+
+function showNamesPrompt(terrNum) {
+	var content = "";
+	if ($("#names-prompt").length > 0)  {
+		$("#names-prompt").css("display", "block");	
+		$("#names-prompt .names-list").empty();
+		$("#names-prompt header span").text(terrNum);
+	}
+	else {
+		content = "<div id='names-prompt' class='page prompt'><header><h1>assign brother to terr #<span>" + terrNum + "</span></h1></header><div class='page-content'><ul class='names-list'></ul></div></div>";
+		$("#content").append(content);
+	}
+	
+	show = function() {
+		$.each(namesArray, function(index, value) {
+			$("#names-prompt .names-list").append("<li>" + value.firstName + " " + value.lastName + "</li");
+		});
+	}
+	
+	show();
+	$("#names-prompt .names-list li").click(function() {
+		$("#names-prompt").css("display", "none");
+		//showTerr($(this).html());
+		$("#territory-page table #terr" + terrNum + " .name").text($(this).html());
+		$("#content table #terr" + terrNum + " .start").text(todaysDate());
+	});
+}
+
+$(document).ready(function() {
+	init();	
+});
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+
+function checkCookie() {
+    var username=getCookie("username");
+    if (username!="") {
+        alert("Welcome again " + username);
+    }else{
+        username = prompt("Please enter your name:", "");
+        if (username != "" && username != null) {
+            setCookie("username", username, 365);
+        }
+    }
+}
+
+var cityTerritoryMap = {
+	"Carson": 38,
+	"Torrance": 10,
+	"Harbor City": 4,
+	"Gardena": 6	
+};
+
+var namesArray = [
+	{
+		"lastName": "Bernardo",
+		"firstName": "Noel"
+	},
+	{
+		"lastName": "David",
+		"firstName": "Danilo"
+	},
+	{
+		"lastName": "Escala",
+		"firstName": "Omar"
+	},
+	{
+		"lastName": "Goco",
+		"firstName": "Rey"
+	},
+	{
+		"lastName": "Marquez",
+		"firstName": "Michael"
+	},
+	{
+		"lastName": "Marquez",
+		"firstName": "Oscar"
+	},
+	{
+		"lastName": "Piedad",
+		"firstName": "Tammy"
+	},
+	{
+		"lastName": "Tan",
+		"firstName": "Carlito"
+	},
+	{
+		"lastName": "Lopez",
+		"firstName": "Daniel"
+	},
+	{
+		"lastName": "Lopez",
+		"firstName": "Danilo"
+	},
+	{
+		"lastName": "Manuel",
+		"firstName": "Edgar"
+	},
+	{
+		"lastName": "Valdez",
+		"firstName": "Kevin"
+	},
+	{
+		"lastName": "Salangga",
+		"firstName": "Domingo"
+	},
+	{
+		"lastName": "David",
+		"firstName": "Gary"
+	},
+	{
+		"lastName": "Dimaculangan",
+		"firstName": "Ralph"
+	},
+	{
+		"lastName": "David",
+		"firstName": "John"
+	},
+	{
+		"lastName": "Marquez",
+		"firstName": "Marvin"
+	},
+	{
+		"lastName": "Mitchell",
+		"firstName": "Robert"
+	}
+];
+
+</script>
+<!--<script type="text/javascript" src="script.js"></script>-->
+
+</html>

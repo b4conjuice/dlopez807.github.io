@@ -1,0 +1,85 @@
+{
+	"team": [
+		{
+			"lastName": "Curry",
+			"firstName": "Stephen",
+			"position": "PG",
+			"position2": "SG"
+		},
+		{
+			"lastName": "Thompson",
+			"firstName": "Klay",
+			"position": "SG",
+			"position2": "SF"
+		},
+		{
+			"lastName": "Barnes",
+			"firstName": "Harrison",
+			"position": "SF",
+			"position2": "PF"
+		},
+		{
+			"lastName": "Green",
+			"firstName": "Draymond",
+			"position": "PF",
+			"position2": "C"
+		},
+		{
+			"lastName": "Bogut",
+			"firstName": "Andrew",
+			"position": "C"
+		},
+		{
+			"lastName": "Iguodala",
+			"firstName": "Andre",
+			"position": "SF",
+			"position2": "SG"
+		},
+		{
+			"lastName": "Livingston",
+			"firstName": "Shaun",
+			"position": "PG"
+		},
+		{
+			"lastName": "Barbosa",
+			"firstName": "Leandro",
+			"position": "SG"
+		},
+		{
+			"lastName": "Speights",
+			"firstName": "Mareese",
+			"position": "PF",
+			"position2": "C"
+		},
+		{
+			"lastName": "Ezeli",
+			"firstName": "Festus",
+			"position": "C"
+		},
+		{
+			"lastName": "Clark",
+			"firstName": "Ian",
+			"position": "PG"
+		},
+		{
+			"lastName": "Rush",
+			"firstName": "Brandon",
+			"position": "SG"
+		},
+		{
+			"lastName": "McAdoo",
+			"firstName": "James",
+			"position": "SF"
+		},
+		{
+			"lastName": "Looney",
+			"firstName": "Kevon",
+			"position": "PF"
+		},
+		{
+			"lastName": "Thompson",
+			"firstName": "Jason",
+			"position": "C"
+		}
+	]
+}

@@ -7,6 +7,8 @@ var gulpIf = require('gulp-if');
 var cssnano = require('gulp-cssnano');
 var del = require('del');
 var runSequence = require('run-sequence');
+var imagemin = require('gulp-imagemin');
+var cache = require('gulp-cache');
 
 gulp.task('hello'), function() {
 	console.log('hello there');
@@ -28,9 +30,9 @@ gulp.task('sass', function() {
 
 // });
 gulp.task('watch', ['browserSync'], function() {
-	gulp.watch('assets/css/**/*.css', browserSync.reload);
+	gulp.watch('css/**/*.css', browserSync.reload);
 	gulp.watch('**/*.html', browserSync.reload);
-	gulp.watch('assets/js/**/*.js', browserSync.reload);
+	gulp.watch('js/**/*.js', browserSync.reload);
 
 });
 
@@ -38,7 +40,7 @@ gulp.task('watch', ['browserSync'], function() {
 gulp.task('browserSync', function() {
 	browserSync.init({
 		server: {
-			baseDir: '.'
+			baseDir: 'src'
 		},
 		port: 8792,
 		browser: "google chrome"
@@ -52,17 +54,61 @@ gulp.task('useref', function() {
 		.pipe(gulpIf('*.js', uglify()))
 		// minifies only if it's a css file
 		.pipe(gulpIf('*.css', cssnano()))
-		.pipe(gulp.dest('dist'))
+		//.pipe('src/img/*')
+		.pipe(gulp.dest('build'))
 });
 
-gulp.task('clean:dist', function() {
-	return del.sync('dist');
+gulp.task('clean:build', function() {
+	return del.sync('build');
 });
 
 gulp.task('build', function(callback) {
-	runSequence('clean:dist', ['sass', 'useref'], callback);
+	runSequence('clean:build', ['sass', 'useref', 'images', 'userefportfolio', 'copyportfolio', 'copyportfolio2'], callback);
 });
 
 gulp.task('default', function(callback) {
 	runSequence(['sass', 'browserSync', 'watch'], callback);
 })
+
+gulp.task('startbuild', function(callback) {
+	runSequence(['build', 'browserSyncBuild'], callback);
+})
+
+gulp.task('browserSyncBuild', function() {
+	browserSync.init({
+		server: {
+			baseDir: 'build'
+		},
+		port: 8792,
+		browser: "google chrome"
+	})
+});
+
+gulp.task('images', function(){
+	return gulp.src('src/img/**/*.+(png|jpg|gif|svg)')
+	.pipe(cache(imagemin({
+      interlaced: true
+    })))
+	.pipe(gulp.dest('build/img'))
+});
+
+gulp.task('userefportfolio', function() {
+	return gulp.src('src/portfolio/*.html')
+		.pipe(useref())
+		// minifies only if it's a javascript file
+		.pipe(gulpIf('*.js', uglify()))
+		// minifies only if it's a css file
+		.pipe(gulpIf('*.css', cssnano()))
+		//.pipe('src/img/*')
+		.pipe(gulp.dest('build/portfolio'))
+});
+
+gulp.task('copyportfolio', function() {
+   gulp.src('src/portfolio/*/*.*')
+   .pipe(gulp.dest('build/portfolio'));
+});
+
+gulp.task('copyportfolio2', function() {
+   gulp.src('src/portfolio/*.js')
+   .pipe(gulp.dest('build/portfolio'));
+});

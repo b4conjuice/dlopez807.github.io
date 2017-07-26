@@ -74,6 +74,13 @@ gulp.task('startbuild', function(callback) {
 	runSequence(['build', 'browserSyncBuild'], callback);
 })
 
+gulp.task('deploy', function() {
+	return gulp.src('./build/**/*')
+	.pipe(ghPages({
+		branch: 'master'
+	}));
+});
+
 gulp.task('browserSyncBuild', function() {
 	browserSync.init({
 		server: {

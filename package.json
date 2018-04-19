@@ -8,7 +8,8 @@
     "start": "gulp",
     "build": "gulp build",
     "deployDev": "gulp build && gulp deploy",
-    "deploy": "npm run build && aws s3 sync build/ s3://himynameisdaniel && npm run postdeploy",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://himynameisdaniel",
     "postdeploy": "aws cloudfront create-invalidation --distribution-id E1R8XX7G3OACBJ --paths '/*' && aws cloudfront create-invalidation --distribution-id EMP416R98PX7F --paths '/*'"
   },
   "repository": {
